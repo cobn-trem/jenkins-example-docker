@@ -1,3 +1,3 @@
-FROM node:16-alpine
+FROM karthequian/helloworld:latest
 
 RUN apk add -U git curl
