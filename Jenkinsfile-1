@@ -1,16 +1,16 @@
 pipeline {
-agent {
-  docker {
-    image 'node:18.17.1-alpine3.18'
-    args "-u root"    
-    alwaysPull false
-    reuseNode true
-  }
-}    
-stages {
-        stage('build') {
+    agent any
+    stages {
+        stage('Build') {
             steps {
-                sh 'node --version'
+                // Build your Docker image
+                sh 'docker build -t nginx .'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Run the Docker container
+                sh 'docker run -d -p 8081:80 nginx'
             }
         }
     }
