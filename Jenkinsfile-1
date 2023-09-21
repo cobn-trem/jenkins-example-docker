@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your Docker image
-                sh 'docker build -t nginx .'
+                sh 'docker run -d -p 8081:80 nginx'
             }
         }
         stage('Deploy') {
